@@ -4,15 +4,15 @@
     <title>form</title>
 </head>
 <body>
-    <h1>고객의 소리</h1>
-    <form action="" name="form1" mothod="post">
-    아이디: <input type="text" name="id"><br>
-    구매번호: <input type="number" name="number"><br>
-    비밀번호: <input type="password" name="password"><br>
-    제품을 평가해주세요<br>
-    <textarea row="5" cols="100" name="textarea1"></textarea><br>
-    <input type="submit" name="submit" value="제출">
-    <input type="reset" name="reset" value="리셋">
-</form>
+    <form name="form" method="post" action="">
+        색을 선택해주세요: <input type="color"><br>
+        숫자를 입력하세요(0~100): <input type="number" min="0" max="100" step="10" value="50"><br>
+        슬라이드를 움직여 만족도를 입력하세요(0~100)<input type="range" min="1" max="10000" value="5000">
+        성별을 선택하세요<br>
+        <select name="gender">
+            <option value="female" selected>여성</option>
+            <option value="male">남성</option>
+        </select>
+    </form>
 </body>
 </html>
