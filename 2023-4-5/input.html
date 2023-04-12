@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>home</title>
+    <title>동아리 폼</title>
 </head>
 <body>
     <h1>동아리 지원</h1>
     <form action="" name="inputform" method="post">
         <h3>1지망</h3>
-        <input type="radio" name="first" value="zero" checked>제로픈
-        <input type="radio" name="first" value="apple">에플파이
-        <input type="radio" name="first" value="AD">에드켄
+        <input type="radio" name="first" value="zero" checked>zer0pen
+        <input type="radio" name="first" value="apple">apple pi
+        <input type="radio" name="first" value="AD">adcan
         <input type="radio" name="first" value="RG">RG
         <input type="radio" name="first" value="AnA">AnA<br>
         <h3>2지망</h3>
-        <input type="radio" name="sce" value="zero">제로픈
-        <input type="radio" name="sec" value="apple"checked>애플파이
+        <input type="radio" name="sce" value="zero">zer0pen
+        <input type="radio" name="sec" value="apple" checked>애플파이
         <input type="radio" name="sec" value="AD">에드켄
         <input type="radio" name="sec" value="RG">RG
         <input type="radio" name="sec" value="AnA">AnA<br>
         <h3>3지망</h3>
-        <input type="radio" name="sce" value="zero">제로픈
-        <input type="radio" name="sec" value="apple">에플파이
-        <input type="radio" name="sec" value="AD"checked>에드켄
-        <input type="radio" name="sec" value="RG">RG
-        <input type="radio" name="sec" value="AnA">AnA<br>
-        이름:<input type="text" name="name"><br>
-        학번:<input type="text" name="number"><br>
-        <input type="file"><br>
+        <input type="radio" name="tr" value="zero">zer0pen
+        <input type="radio" name="tr" value="apple">에플파이
+        <input type="radio" name="tr" value="AD"checked>에드켄
+        <input type="radio" name="tr" value="RG">RG
+        <input type="radio" name="tr" value="AnA">AnA<br>
+        이름: <input type="text" name="name" placeholder="홍길동"><br>
+        학년: <select name="grade">
+            <option value="1" selected>1학년</option>
+            <option value="2">2학년</option>
+        </select>
+        학번: <input type="text" name="number" placeholder="10101"><br>
+        포트폴리오 <input type="file" accept="image/png,image/jpeg,image/pdf"><br>
         <input type="submit" name="submit" value="submit">
-        <input type="reset" name="reset" value="리셋">
+        <input type="reset" name="reset" value="reset">
     </form>
 </body>
 </html>
