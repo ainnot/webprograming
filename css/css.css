@@ -1,0 +1,5 @@
+/*mt style.css*/
+*{color: blue;}
+p:hover{background-color: chartreuse;}
+p{color: darkblue;}
+#ID{color: aqua; background-color: red;}
