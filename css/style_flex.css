@@ -1,0 +1,15 @@
+.container{
+    width: 250px;
+    height: 250x;
+    background-color: royalblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: ;
+}
+.container .item{
+    width: 100px;
+    height: 100px;
+    border: 3px dashed red;
+    background-color: orange;
+}
