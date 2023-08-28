@@ -9,9 +9,10 @@
 <body>
     <h1>당신의 이름은?</h1>
     <h1 id="name">이름출력</h1>
+    <h1>계산기</h1>
     <h1 id="num">숫자출력</h1>
-    <button onclick="printName">이름입력하기</button>
-    <button onclick="printNum">숫자더하기</button>
+    <button onclick="printName()">이름입력하기</button>
+    <button onclick="printNum()">숫자더하기</button>
     <script>
         let x;
         let y;
@@ -19,8 +20,8 @@
         let z;
         function printNum(){
             x=(prompt("첫수를 입력하세요"));
-            y=(prompt("두번째 수를 입려하세요"));
-            z=x+y;
+            y=(prompt("두번째 수를 입력하세요"));
+            z=parseInt(x)+parseInt(y);
             document.getElementById("num").innerHTML =z;
         }
         function printName(){
