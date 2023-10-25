@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id=tab border="1">
+        <tr>
+            <td>(1,1)셀</td>
+            <td>(1,2)셀</td>
+        </tr>
+        <tr>
+            <td>(2,1)셀</td>
+            <td>(2,2)셀</td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="insert()">행 추가</button>
+    <script>
+        function insert(){
+            let table = document.getElementById("tab");
+            let row = table.insertRow(0);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            cell1.innerHTML = "새로운 셀 (1,1)";
+            cell2.innerHTML = "새로운 셀 (1,2)";
+        }
+    </script>
+</body>
+</html>
