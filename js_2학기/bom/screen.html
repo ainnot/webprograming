@@ -1,0 +1,9 @@
+<script>
+    function maxopen(url, winattributes) {
+        let maxwindow = window.open(url, "", winattributes);//창을 가장 크게 띄우는 함수
+        maxwindow.moveTo(0, 0);//창을 0,0으로 이동
+        maxwindow.resizeTo(screen.availWidth, screen.availHeight);//가능한 최대크기로 창 사이즈를 재조정
+    }
+
+ </script>
+ <a href="#" onClick="maxopen('http://www.google.com', 'resize=1, scrollbars=1, status=1'); return false">전체 화면 보기</a>
