@@ -3,7 +3,70 @@
 <head>
     <title>webproject</title>
     <script>
-        
+        function addZero(a){
+            if(a<10){
+                a=`0${a}`;
+            }
+            else{
+                a=a.toString();
+            }
+            return a;
+        }
+        function setClock(){
+            var newTime = new Date();
+            var hour = newTime.getHours();
+            var min = newTime.getMinutes();
+            var sec = newTime.getSeconds();
+            if(hour>12){
+                hour-=12;
+                document.getElementById("am").innerHTML="PM";
+            }
+            else if(hour==0){
+                hour=12;
+                document.getElementById("am").innerHTML="AM";
+            }
+            else{
+                document.getElementById("am").innerHTML="AM";
+            }
+            document.getElementById("time").innerHTML=addZero(hour)+":"+addZero(min);
+            document.getElementById("sec").innerHTML=addZero(sec);
+        }
+        function setDate(){
+            var newDate = new Date();
+            var year = newDate.getFullYear();
+            var month = newDate.getMonth()+1;
+            var date = newDate.getDate();
+            var dayIndex = newDate.getDay();
+            var day;
+            if(dayIndex==0){
+                day="일";
+            }
+            else if(dayIndex==1){
+                day="월";
+            }
+            else if(dayIndex==2){
+                day="화";
+            }
+            else if(dayIndex==3){
+                day="수";
+            }
+            else if(dayIndex==4){
+                day="목";
+            }
+            else if(dayIndex==5){
+                day="금";
+            }
+            else if(dayIndex==6){
+                day="토";
+            }
+            document.getElementById("date").innerHTML=year+"년 "+ month+"월 "+ date+"일 "+ day+"요일";
+        }
+        window.onload=function(){
+            setClock();
+            setDate();
+            setInterval(setClock,100);
+            setInterval(setDate,1000);
+        }
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
@@ -11,7 +74,7 @@
             width: 400px;
             height: 200px;
             position: relative;
-            margin: 0 auto;
+            margin: 100px auto;
             font-family: 'roboto', sans-serif;
         }
         #time{
@@ -24,34 +87,34 @@
             position: absolute;
             width: 70px;
             height: 70px;
-            left: 300px;
-            top: 25px;
+            left: 305px;
+            top: 20px;
             font-size: 40px;
         }
         #sec{
             position: absolute;
             width: 70px;
             height: 70px;
-            left: 300px;
-            top: 85px;
+            left: 305px;
+            top: 80px;
             font-size: 40px;
         }
         #date{
             position: absolute;
-            width: 185px;
-            height: 20px;
-            top: 140px;
-            left: 107.5px;
-            font-size: 16px;
+            width: 230px;
+            height: 25px;
+            top: 125px;
+            left: 85px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <div id="time">09:45</div>
-        <div id="am">am</div>
-        <div id="sec">15</div>
-        <div id="date">2023년 11월 30일 목요일</div>
+        <div id="time"></div>
+        <div id="am"></div>
+        <div id="sec"></div>
+        <div id="date"></div>
     </div>
 </body>
 </html>
