@@ -61,11 +61,35 @@
             }
             document.getElementById("date").innerHTML=year+"년 "+ month+"월 "+ date+"일 "+ day+"요일";
         }
+        function getWeather(lat,lng){
+            try{
+                fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={}`
+                )
+                .then((response) => {
+                    return response.json();
+                })
+                .then((json) => {
+                    console.log(json);
+                })
+            }
+            catch(error){
+                console.error("날씨데이터 접근 중 error 발생");
+            }
+        }
+        function userLocation(position){
+            var userLat = position.coords.latitude;
+            var userLng = position.coords.longitude;
+        }
+        function errorMsg(error){
+            console.error("사용자 위치정보 차단");
+        }
         window.onload=function(){
             setClock();
             setDate();
             setInterval(setClock,100);
             setInterval(setDate,1000);
+            navigator.geolocation.getCurrentPosition(userLocation, errorMsg);
         }
     </script>
     <style>
