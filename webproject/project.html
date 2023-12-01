@@ -13,10 +13,10 @@
             return a;
         }
         function setClock(){
-            var newTime = new Date();
-            var hour = newTime.getHours();
-            var min = newTime.getMinutes();
-            var sec = newTime.getSeconds();
+            let newTime = new Date();
+            let hour = newTime.getHours();
+            let min = newTime.getMinutes();
+            let sec = newTime.getSeconds();
             if(hour>12){
                 hour-=12;
                 document.getElementById("am").innerHTML="PM";
@@ -32,12 +32,12 @@
             document.getElementById("sec").innerHTML=addZero(sec);
         }
         function setDate(){
-            var newDate = new Date();
-            var year = newDate.getFullYear();
-            var month = newDate.getMonth()+1;
-            var date = newDate.getDate();
-            var dayIndex = newDate.getDay();
-            var day;
+            let newDate = new Date();
+            let year = newDate.getFullYear();
+            let month = newDate.getMonth()+1;
+            let date = newDate.getDate();
+            let dayIndex = newDate.getDay();
+            let day;
             if(dayIndex==0){
                 day="일";
             }
@@ -61,40 +61,41 @@
             }
             document.getElementById("date").innerHTML=year+"년 "+ month+"월 "+ date+"일 "+ day+"요일";
         }
-        async function getWeather(lat,lng){
-            const data = []
-            try{
-                const weatherRepsonse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e89d6cbebe4567f9679d37643de972fd`)
-                const weatherJson = await weatherRepsonse.json()
+        async function getWeather(lat, lng) {
+        const data = [];
+        try {
+            const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e89d6cbebe4567f9679d37643de972fd`);
+            const weatherJson = await weatherResponse.json();
 
-                const mise = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e89d6cbebe4567f9679d37643de972fd`)
-                const miseJson = await mise.json()
+            const microResponse = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lng}&appid=e89d6cbebe4567f9679d37643de972fd`);
+            const microJson = await microResponse.json();
 
-                data.push(weatherJson)
-                data.push(miseJson)
+            data.push(weatherJson);
+            data.push(microJson);
 
-                console.log(data)
-                return data
-            }
-            catch(error){
-                console.error("날씨데이터 접근 중 error 발생", error.message);
-            }
+            console.log(data);
+        } catch (error) {
+            console.error("날씨데이터 접근 중 error 발생", error.message);
         }
-        async function userLocation(position){
-            var userLat = position.coords.latitude;
-            var userLng = position.coords.longitude;
-            await getWeather(userLat,userLng);
-        }
-        function errorMsg(error){
-            console.error("사용자 위치정보 차단");
-        }
-        window.onload=function(){
-            setClock();
-            setDate();
-            setInterval(setClock,100);
-            setInterval(setDate,1000);
-            navigator.geolocation.getCurrentPosition(userLocation, errorMsg);
-        }
+    }
+
+    async function userLocation(position) {
+        let userLat = position.coords.latitude;
+        let userLng = position.coords.longitude;
+        await getWeather(userLat, userLng);
+    }
+
+function errorMsg(error) {
+    console.error("사용자 위치정보 차단");
+}
+
+    window.onload = function () {
+        setClock();
+        setDate();
+        setInterval(setClock, 100);
+        setInterval(setDate, 1000);
+        navigator.geolocation.getCurrentPosition(userLocation, errorMsg);
+    }
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
@@ -103,7 +104,6 @@
             height: 200px;
             position: relative;
             margin: 100px auto;
-            font-family: 'roboto', sans-serif;
         }
         #time{
             position: absolute;
@@ -135,9 +135,15 @@
             left: 85px;
             font-size: 20px;
         }
+        #weather{
+            width: 200px;
+            height: 150px;
+            position: relative;
+
+        }
     </style>
 </head>
-<body>
+<body style="font-family: 'roboto', sans-serif;">
     <div id="container">
         <div id="time"></div>
         <div id="am"></div>
@@ -147,6 +153,7 @@
     <div id="weather">
         <div id="icon"></div>
         <div id="temp"></div>
+        <div id="loca"></div>
     </div>
 </body>
 </html>
