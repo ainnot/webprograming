@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+    <script>
+        function addNode(t) {
+          let add=document.createElement("p");
+          add.innerHTML=t;
+          document.getElementById("target").appendChild(add);
+        }
+    </script>
+    </head>
+<body>
+    
+<div id="target" onclick="addNode('동적으로 텍스트가 추가됩니다.')"
+    style="font: 20px italic;">여기를 클릭하세요.</div>
+</body>
+</html>
